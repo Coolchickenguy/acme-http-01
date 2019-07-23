@@ -1,0 +1,31 @@
+{
+	"name": "acme-dns-01-{{servicename}}",
+	"version": "0.0.1",
+	"description": "{{ Service Title }} + Let's Encrypt for Node.js - ACME dns-01 challenges w/ ACME.js and Greenlock.js",
+	"main": "index.js",
+	"files": [
+		"lib",
+		"test.js"
+	],
+	"scripts": {
+		"test": "node test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://git.coolaj86.com/coolaj86/acme-dns-01-{{servicename}}.js.git"
+	},
+	"keywords": [
+		"{{servicename}}",
+		"dns",
+		"dns-01",
+		"letsencrypt",
+		"acme",
+		"greenlock"
+	],
+	"author": "AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com/)",
+	"license": "MPL-2.0",
+	"devDependencies": {
+		"acme-dns-01-test": "^3.3.1",
+		"dotenv": "^8.0.0"
+	}
+}
