@@ -23,6 +23,9 @@
 		"greenlock"
 	],
 	"author": "AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com/)",
+	"contributors": [
+		"AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com/)"
+	],
 	"license": "MPL-2.0",
 	"devDependencies": {
 		"acme-challenge-test": "^3.3.2",
