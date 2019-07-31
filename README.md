@@ -1,8 +1,8 @@
-# [acme-dns-01-{{servicename}}.js](https://git.rootprojects.org/root/acme-dns-01-{{servicename}}.js) | a [Root](https://rootprojects.org/) project
+# [acme-http-01-{{servicename}}.js](https://git.rootprojects.org/root/acme-http-01-{{servicename}}.js) | a [Root](https://rootprojects.org/) project
 
-{{ Service Title }} DNS + Let's Encrypt for Node.js - ACME dns-01 challenges w/ ACME.js and Greenlock.js
+{{ Service Title }} Storage + Let's Encrypt for Node.js - ACME http-01 challenges w/ ACME.js and Greenlock.js
 
-Handles ACME dns-01 challenges. Compatible with ACME.js and Greenlock.js. Passes acme-dns-01-test.
+Handles ACME http-01 challenges. Compatible with ACME.js and Greenlock.js. Passes acme-http-01-test.
 
 # Features
 
@@ -18,7 +18,7 @@ Handles ACME dns-01 challenges. Compatible with ACME.js and Greenlock.js. Passes
 # Install
 
 ```js
-npm install --save acme-dns-01-{{servicename}}
+npm install --save acme-http-01-{{servicename}}
 ```
 
 {{ Service Title }} Token:
@@ -31,7 +31,7 @@ npm install --save acme-dns-01-{{servicename}}
 First you create an instance with your credentials:
 
 ```js
-var dns01 = require('acme-dns-01-{{servicename}}').create({
+var http01 = require('acme-http-01-{{servicename}}').create({
 	baseUrl: '{{ api url }}', // default
 	token: 'xxxx'
 });
@@ -45,9 +45,9 @@ Then you can use it with any compatible ACME library, such as Greenlock.js or AC
 var Greenlock = require('greenlock-express');
 var greenlock = Greenlock.create({
 	challenges: {
-		'dns-01': dns01
-		// ...
+		'http-01': http01
 	}
+	// ...
 });
 ```
 
@@ -63,32 +63,30 @@ See the [ACME.js](https://git.rootprojects.org/root/acme-v2.js) for more details
 
 ## Build your own
 
-There are only 5 methods:
+There are only 4 methods:
 
 -   `init(config)`
--   `zones(opts)`
 -   `set(opts)`
 -   `get(opts)`
 -   `remove(opts)`
 
 ```js
-dns01
+http01
 	.set({
-		identifier: { value: 'foo.example.co.uk' },
-		wildcard: false,
-		dnsZone: 'example.co.uk',
-		dnsPrefix: '_acme-challenge.foo',
-		dnsAuthorization: 'xxx_secret_xxx'
+		altname: 'foo.example.co.uk',
+		token: 'xxxx'
+		keyAuthorization: 'xxxx.yyyy'
 	})
 	.then(function() {
-		console.log('TXT record set');
+		console.log('Saved ACME key authorization file');
 	})
-	.catch(function() {
-		console.log('Failed to set TXT record');
+	.catch(function(err) {
+		console.error('Failed to save ACME key authorization file');
+		console.error(err);
 	});
 ```
 
-See acme-dns-01-test for more implementation details.
+See acme-http-01-test for more implementation details.
 
 # Tests
 
@@ -105,7 +103,7 @@ See AUTHORS for contact info.
 
 # Legal
 
-[acme-dns-01-{{servicename}}.js](https://git.coolaj86.com/coolaj86/acme-dns-01-{{servicename}}.js) | MPL-2.0 | [Terms of Use](https://therootcompany.com/legal/#terms) | [Privacy Policy](https://therootcompany.com/legal/#privacy)
+[acme-http-01-{{servicename}}.js](https://git.coolaj86.com/coolaj86/acme-http-01-{{servicename}}.js) | MPL-2.0 | [Terms of Use](https://therootcompany.com/legal/#terms) | [Privacy Policy](https://therootcompany.com/legal/#privacy)
 
 Copyright 2019 AJ ONeal
 Copyright 2019 The Root Group LLC

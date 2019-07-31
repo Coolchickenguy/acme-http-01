@@ -5,18 +5,20 @@
 var tester = require('acme-challenge-test');
 require('dotenv').config();
 
-// Usage: node ./test.js example.com xxxxxxxxx
-var zone = process.argv[2] || process.env.ZONE;
+// Usage: node ./test.js example.com username xxxxxxxxx
+var record = process.argv[2] || process.env.RECORD;
 var challenger = require('./index.js').create({
-	token: process.argv[3] || process.env.TOKEN
+	webroot:
+		'/tmp/acme-tests/{domain}/.well-known/acme-challenges/' ||
+		process.env.WEBROOT
 });
 
 // The dry-run tests can pass on, literally, 'example.com'
 // but the integration tests require that you have control over the domain
 tester
-	.testZone('dns-01', zone, challenger)
+	.testRecord('http-01', record, challenger)
 	.then(function() {
-		console.info('PASS', zone);
+		console.info('PASS', record);
 	})
 	.catch(function(e) {
 		console.error(e.message);
