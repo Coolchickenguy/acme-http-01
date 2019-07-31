@@ -24,3 +24,17 @@ tester
 		console.error(e.message);
 		console.error(e.stack);
 	});
+
+var ch = { identifier: { value: 'foo.example.co.uk' } };
+//var ch = { domain: 'foo.example.co.uk' };
+var homeish = challenger._tpl('~/.local/tmp/acme-challenge', ch);
+console.log(homeish);
+if ('/' !== homeish[0] || /~/.test(homeish)) {
+	throw new Error('Not the expected value for home tmp: ' + homeish);
+}
+
+var srvish = challenger._tpl('/srv/{domain}/.well-known/acme-challenge', ch);
+console.log(srvish);
+if ('/' !== srvish[0] || /~/.test(srvish)) {
+	throw new Error('Not the expected value for srv template: ' + srvish);
+}

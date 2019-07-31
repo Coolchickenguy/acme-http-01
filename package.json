@@ -1,7 +1,7 @@
 {
-	"name": "acme-http-01-{{servicename}}",
-	"version": "0.0.1",
-	"description": "{{ Service Title }} + Let's Encrypt for Node.js - ACME http-01 challenges w/ ACME.js and Greenlock.js",
+	"name": "acme-http-01-webroot",
+	"version": "3.0.0",
+	"description": "Webroot Authentication + Let's Encrypt for Node.js - ACME http-01 challenges w/ ACME.js and Greenlock.js",
 	"main": "index.js",
 	"files": [
 		"lib",
@@ -12,10 +12,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://git.coolaj86.com/coolaj86/acme-http-01-{{servicename}}.js.git"
+		"url": "https://git.coolaj86.com/coolaj86/acme-http-01-webroot.js.git"
 	},
 	"keywords": [
-		"{{servicename}}",
+		"webroot",
 		"storage",
 		"http-01",
 		"letsencrypt",
@@ -31,5 +31,7 @@
 		"acme-challenge-test": "^3.3.2",
 		"dotenv": "^8.0.0"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"@root/mkdirp": "^1.0.0"
+	}
 }
